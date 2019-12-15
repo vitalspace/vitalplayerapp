@@ -1,0 +1,18 @@
+<%- include('../views/partilas/head.ejs') %>
+<div class="paddingl-60 paddingr-10 flex-center">
+  <% if (list) { %>
+  <% list.forEach(function (md) { %>
+  <div class="border-3 borderr-5 text-center margint-10 marginl-10 marginb-10 marginr-10 width-200">
+    <div class="">
+      <a href="http://localhost:4000/list/?name=<%=md.name%>&url=<%=md.url%>"><img src="<%= md.image %>" alt=""
+          width="150" height="225"></a>
+    </div>
+    <div class="paddingt-5 paddingb-5 colort-white color-test1">
+      <%= md.name %>
+      <a href="/delete/<%= md.id %>" class="btn-5" title="You are about to delete all user data: <%= md.name %>.">Delete</a>
+    </div>
+  </div>
+  <% }); %>
+  <% }; %>
+</div>
+

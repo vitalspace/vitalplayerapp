@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./public/css/utils.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+  <title>Vitalplayer</title>
+</head>
+
+<style>
+  * {
+    font-family: 'Kanit', sans-serif;
+  }
+
+  #notification {
+    position: fixed;
+    bottom: 20px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<body class="colorb-dayblues">
+  <div class="center-things">
+    <div class="text-center paddingt-20 paddingb-20">
+      <img src="./public/img/logo.png" alt="" width="50" height="50">
+    </div>
+    <div
+      class="width-200 text-center colorb-gray colort-white borderr-5 paddingl-40 paddingr-40 paddingt-40 paddingb-40">
+      <div class="paddingt-10"><label for="email">Email</label></div>
+      <div class="paddingt-10"><input type="email" name="email" id="email" class="email text-center"
+          placeholder="example@example.com" autofocus required /></div>
+      <div class="paddingt-10"><label for="password">Password</label></div>
+      <div class="paddingt-10"><input type="password" name="password" id="password" class="password text-center"
+          placeholder="abc123" required /></div>
+      <div class="paddingt-10"><input type="submit" class="submit btn-4"></div>
+      <p class="fontsize-10">By logging in with your valid spotify account you accept our terms and conditions.</p>
+      <p id="version"></p>
+    </div>
+    <span class="result"></span>
+  </div>
+  <div id="notification" class="hidden">
+    <p id="message"></p>
+    <button id="close-button" onClick="closeNotification()">
+      Close
+    </button>
+    <button id="restart-button" onClick="restartApp()" class="hidden">
+      Restart
+    </button>
+  </div>
+</body>
+
+<script>
+  const { ipcRenderer } = require('electron')
+  document.querySelector('.submit').addEventListener('click', function () {
+    const email = document.querySelector("#email").value;
+    const pass = document.querySelector('#password').value;
+    const object = { email, pass };
+
+    // send username to main.js 
+    ipcRenderer.send('asynchronous-message', object);
+    // receive message from main.js
+    ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      const message = document.querySelector('.result');
+      message.innerHTML += `${arg}`;
+    })
+  });
+  // ========== [ Update ] ========== //
+  const version = document.getElementById('version');
+  const notification = document.getElementById('notification');
+  const message = document.getElementById('message');
+  const restartButton = document.getElementById('restart-button');
+
+  ipcRenderer.send('app_version');
+  ipcRenderer.on('app_version', (event, arg) => {
+    ipcRenderer.removeAllListeners('app_version');
+    version.innerText = 'Version ' + arg.version;
+  });
+  
+  ipcRenderer.on('update_available', () => {
+    ipcRenderer.removeAllListeners('update_available');
+    message.innerText = 'A new update is available. Downloading now...';
+    notification.classList.remove('hidden');
+  });
+
+  ipcRenderer.on('update_downloaded', () => {
+    ipcRenderer.removeAllListeners('update_downloaded');
+    message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+    restartButton.classList.remove('hidden');
+    notification.classList.remove('hidden');
+  });
+
+  function closeNotification() {
+    notification.classList.add('hidden');
+  }
+
+  function restartApp() {
+    ipcRenderer.send('restart_app');
+  }
+</script>
+
+</html>

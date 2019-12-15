@@ -1,0 +1,24 @@
+<%- include('../views/partilas/head.ejs') %>
+
+<div class="colort-gray center-things text-center">
+  <div class="border-1 borderr-5 paddingl-50 paddingr-50 paddingt-50 paddingb-50 colorb-white box-shadow-purple">
+    <h1 class="paddingt-20 paddingb-20 fontsize-26">Add List</h1>
+    <form method="POST" action="/addlist">
+      <div class="paddingt-10 paddingb-10 fontsize-14"><label for="name">Name List</label></div>
+      <div class="paddingt-10 paddingb-10">
+        <input type="text" name="name" placeholder="My List" class="text-center" required />
+      </div>
+      <div class="paddingt-10 paddingb-10 fontsize-14"><label for="image">Image</label></div>
+      <div class="paddingt-10 paddingb-10">
+        <input type="url" name="image" placeholder="https://image.image" class="text-center" autofocus required />
+      </div>
+      <div class="paddingt-10 paddingb-10"><label for="url">Url</label></div>
+      <div class="paddingt-10 paddingb-10">
+        <input type="url" name="url" placeholder="http://example.com/list.json" class="text-center" required />
+      </div>
+      <div class="paddingt-10 paddingb-10">
+        <input type="submit" class="btn-4" value="Save">
+      </div>
+    </form>
+  </div>
+</div>

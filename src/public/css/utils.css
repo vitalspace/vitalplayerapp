@@ -1,0 +1,239 @@
+/* ========== [ IMGS ] ========== */
+.bor-user { border: 1px solid; border-radius: 50%; }
+/* ========== [ Text Family ] ========== */
+.sains-serif { font-family: sans-serif; }
+.text-bold { font-weight: bold; }
+/* ========== [ Text Alings ] ========== */
+.text-left { text-align: left; } .text-right { text-align: right; } .text-center { text-align: center; }
+/* ========== [ Text Size ] ========== */
+.fontsize-5 { font-size: 5px; } .fontsize-8 { font-size: 8px; } .fontsize-10 { font-size: 10px; }
+.fontsize-12 { font-size: 12px; } .fontsize-14 { font-size: 14px; } .fontsize-16 { font-size: 16px; } 
+.fontsize-18 { font-size: 18px; } .fontsize-20 { font-size: 20px; } .fontsize-22 { font-size: 22px; } 
+.fontsize-24 { font-size: 24px; } .fontsize-26 { font-size: 26px; } .fontsize-28 { font-size: 28px; }
+.fontsize-30 { font-size: 30px; }  
+/* ========== [ Colors text ] ========== */
+.colort-white { color: white; }
+.colort-gray { color: #414141; }
+/* ========== [ Colors background ] ========== */
+.colorb-white { background-color: white; }
+.color-test { background-color: #131313; }
+.color-test1 { background-color: #1e2d60 }
+
+.colorb-gray { background-color: rgba(228, 228, 228, 0.335); }
+.colorb-black { background-color: #000000; }
+.colorb-youtube { background: linear-gradient(to right, #e52d27, #b31217); }
+.colorb-qepal { background: linear-gradient(to right, #11998e, #38ef7d); }
+.colorb-dayblues { background: linear-gradient(to left, #40e0d0, #ff8c00, #ff0080); }
+.colorb-sublimelight { background: linear-gradient(to left, #fc5c7d, #6a82fb); }
+.colorb-miaka { background: linear-gradient(to left, #fc354c, #0abfbc); }
+.colorb-hydrogen { background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); }
+.colorb-twitch { background: linear-gradient(to left, #6441a5, #2a0845); }
+.colorb-sublimevivid { background: linear-gradient(to left, #fc466b, #3f5efb); }
+/* ========== [ width ] ========== */
+.width-auto { width: auto; }
+.width-25p { width: 25%; } 
+.width-50p { width: 50%; } 
+.width-80p { width: 70%; } 
+.width-100p { width: 100%; } 
+
+.width-100 { width: 100px; }
+.width-150 { width: 150px; }
+.width-200 { width: 200px; }
+/* ========== [ Paddings ] ========== */
+.padding-auto{ padding: auto; }
+
+.paddingl-5 { padding-left: 5px; } .paddingl-10 { padding-left: 10px; } 
+.paddingl-15 { padding-left: 15px; } .paddingl-20 { padding-left: 20px; }
+.paddingl-25 { padding-left: 25px; } .paddingl-30 { padding-left: 30px; }
+.paddingl-35 { padding-left: 35px; } .paddingl-40 { padding-left: 40px; }
+.paddingl-45 { padding-left: 45px; } .paddingl-50 { padding-left: 50px; }
+.paddingl-55 { padding-left: 55px; } .paddingl-60 { padding-left: 60px; }
+
+.paddingr-5 { padding-right: 5px; } .paddingr-10 { padding-right: 10px; }
+.paddingr-15 { padding-right: 15px; } .paddingr-20 { padding-right: 20px; }
+.paddingr-25 { padding-right: 25px; } .paddingr-30 { padding-right: 30px; }
+.paddingr-35 { padding-right: 35px; } .paddingr-40 { padding-right: 40px; }
+.paddingr-45 { padding-right: 45px; } .paddingr-50 { padding-right: 50px; }
+.paddingr-55 { padding-right: 55px; } .paddingr-60 { padding-right: 60px; }
+
+.paddingt-5 { padding-top: 5px; } .paddingt-10 { padding-top: 10px; }
+.paddingt-15 { padding-top: 15px; } .paddingt-20 { padding-top: 20px; }
+.paddingt-25 { padding-top: 25px; } .paddingt-30 { padding-top: 30px; }
+.paddingt-35 { padding-top: 35px; } .paddingt-40 { padding-top: 40px; }
+.paddingt-45 { padding-top: 45px; } .paddingt-50 { padding-top: 50px; }
+
+.paddingb-5 { padding-bottom: 5px; } .paddingb-10 { padding-bottom: 10px; }
+.paddingb-15 { padding-bottom: 15px; } .paddingb-20 { padding-bottom: 20px; }
+.paddingb-25 { padding-bottom: 25px; } .paddingb-30 { padding-bottom: 30px; }
+.paddingb-35 { padding-bottom: 35px; } .paddingb-40 { padding-bottom: 40px; }
+.paddingb-45 { padding-bottom: 45px; } .paddingb-50 { padding-bottom: 50px; }
+
+/* ========== [ Margings ] ========== */
+.margin-auto { margin: auto; }
+
+.marginl-5 { margin-left: 5px; } .marginl-10 { margin-left: 10px; }
+.marginl-15 { margin-left: 15px; } .marginl-20 { margin-left: 20px; } 
+.marginl-25 { margin-left: 25px; } .marginl-30 { margin-left: 30px; } 
+.marginl-35 { margin-left: 35px; } .marginl-40 { margin-left: 40px; }
+.marginl-45 { margin-left: 45px; } .marginl-50 { margin-left: 50px; } 
+
+.marginr-5 { margin-right: 5px; } .marginr-10 { margin-right: 10px; }
+.marginr-15 { margin-right: 15px; } .marginr-20 { margin-right: 20px; }
+.marginr-25 { margin-right: 25px; } .marginr-30 { margin-right: 30px; }
+.marginr-35 { margin-right: 35px; } .marginr-40 { margin-right: 40px; }
+.marginr-45 { margin-right: 45px; } .marginr-50 { margin-right: 50px; }
+
+.margint-5 { margin-top: 5px; } .margint-10 { margin-top: 10px; }
+.margint-15 { margin-top: 15px; } .margint-20 { margin-top: 20px; } 
+.margint-25 { margin-top: 25px; } .margint-30 { margin-top: 30px; } 
+.margint-35 { margin-top: 35px; } .margint-40 { margin-top: 40px; } 
+.margint-45 { margin-top: 45px; } .margint-50 { margin-top: 50px; } 
+
+.marginb-5 { margin-bottom: 5px; } .marginb-10 { margin-bottom: 10px; }
+.marginb-15 { margin-bottom: 15px; } .marginb-20 { margin-bottom: 20px; }
+.marginb-25 { margin-bottom: 25px; } .marginb-30 { margin-bottom: 30px; }
+.marginb-35 { margin-bottom: 35px; } .marginb-40 { margin-bottom: 40px; }
+.marginb-45 { margin-bottom: 45px; } .marginb-50 { margin-bottom: 50px; }
+
+/* ========== [ Border-radius ] ========== */
+.border-1 { border: 1px solid black;}
+.border-2 { border: 2px solid black;}
+.border-3 { border: 3px solid #006f64;}
+.border-4 { border: 4px solid black;}
+.border-5 { border: 5px solid black;}
+/* ========== [ Border-radius ] ========== */
+.borderr-3 { border-radius: 3px; }
+.borderr-5 { border-radius: 5px; }
+.borderr-8 { border-radius: 8px; }
+.borderr-10 { border-radius: 10px; }
+/* ========== [ Centener thins ] ========== */
+.center-things { margin: 0; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%) }
+/* ========== [ Flex ] ========== */
+.flex { display: flex; flex-direction: row; flex-wrap: wrap; }
+.flex-center { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;}
+/* ========== [ Fixed footer ] ========== */
+.fixed-footer { position: fixed; left: 0; bottom: 0; width: 100%; color: white; }
+/* ========== [ Card ] ========== */
+.card { border-radius: 3px; padding: 10px 0; margin: 10px; width: 200px; color: black; }
+.card:hover { color: white; transition: 0.5s; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); text-shadow: 0 0 5px #1f4262; transform: translateY(8px) }
+
+/* ========== [ Loader ] ========== */
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 15px;
+    height: 15px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+/* ========== [ Box Shadow ] ========== */
+
+.box-shadow {
+    box-shadow: 6px 5px;
+}
+
+.box-shadow-purple{
+    box-shadow: 5px 5px #4f1a9c;
+}
+
+/* ========== [ Bottons ] ========== */
+.btn-1 {
+    border: none;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #ff00cc;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #333399, #ff00cc);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #333399, #ff00cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-1:hover{
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.btn-2 {
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+
+.btn-2:hover {
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-3 {
+    border: none;
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.btn-3:hover {
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.btn-4 {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 70px;
+    border-radius: 5px;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-4:hover {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 70px;
+    border-radius: 10px;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-5 {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 5px;
+    border-radius: 3px;
+    background: #00B4DB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */       
+}
+
+.btn-6 { border: 1px solid white; background: transparent; padding: 10px; color: white; transition: 0.5s; }
+.btn-6:hover { background: #00B4DB; }

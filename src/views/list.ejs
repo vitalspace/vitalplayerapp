@@ -1,0 +1,71 @@
+<%- include('../views/partilas/head.ejs') %>
+
+<div class="text-center margin-auto width-50p">
+  <input placeholder="Media or Genre" id="search" type="text" class="width-100p paddingt-10 paddingb-10 text-center" autofocus />
+</div>
+<div id="countryList"></div>
+
+
+<div class="paddingl-60 paddingr-10 flex-center">
+  <% if (media) { %>
+  <% media.forEach(function (md) { %>
+  <div class="border-3 borderr-5 text-center margint-10 marginl-10 marginb-10 marginr-10 width-200">
+    <div class="">
+      <a onclick="showinfo()" href="http://localhost:4000/video/?medianame=<%=md.medianame%>&mediacover=<%=md.mediacover%>&genre=<%=md.genre%>&server=<%=md.server%>&serverid=<%=md.serverid%>&description=<%=md.description%>"><img src="<%=md.mediacover %>" alt="" width="150" height="225" /></a> 
+    </div>
+    <div class="paddingt-5 paddingb-5 colort-white color-test1">
+      <%= md.medianame %>
+    </div>
+    <div class="media-url">
+    </div>
+  </div>
+  <% }); %>
+  <% }; %>
+</div>
+
+<footer class="fixed-footer colorb-hydrogen text-center"></footer>
+
+<script>
+  const searchcountry = async searchBox => {
+    const countries = await <%- JSON.stringify(media) %>;
+    //Get Entered Data
+    let fits = countries.filter(country => {
+      const regex = new RegExp(`^${searchBox}`, 'gi');
+      return country.medianame.match(regex) || country.id.match(regex) || country.genre.match(regex);
+    });
+    if (searchBox.length === 0) {
+      fits = [];
+      countryList.innerHTML = '';
+    }
+    outputHtml(fits);
+  };
+  const outputHtml = fits => {
+    if (fits.length > 0) {
+      const html = fits
+        .map(
+          fit => `    
+    <div class="paddingl-60 paddingr-10 margin-auto">
+      <div class="border-1 margint-10 marginb-10 flex colorb-white">
+        <img src="${fit.mediacover}" alt="" width="50" height="50" />
+        <div style="padding: 7px 10px;">
+          <h4 class="">${fit.medianame} (${fit.genre})</h4>
+          <button class="btn-5"><a class="colort-white" onclick="showinfo()" href="http://localhost:4000/video/?medianame=${fit.medianame}&mediacover=${fit.mediacover}&genre=${fit.genre}&server=${fit.server}&serverid=${fit.serverid}&description=${fit.description}">Wacth now</a></button>
+        </div>
+      </div>
+    </div>`)
+      .join('');
+      document.getElementById('countryList').innerHTML = html;
+    }
+  };
+  document
+    .getElementById('search')
+    .addEventListener('input', () => searchcountry(search.value));
+
+  const showinfo = () => {
+    document.querySelector('footer').style.padding ="10px 0"
+    document.querySelector('footer').innerHTML = `
+    <div class="loader margin-auto"></div>  
+    <div class="paddingt-10">We are loading the media please wait.</div>
+    `;
+  }
+</script>

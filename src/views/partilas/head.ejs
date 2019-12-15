@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="http://localhost:4000/css/utils.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+  <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <title>Vitalplayer</title>
+</head>
+  
+<style>
+* {
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  text-decoration: none;
+}
+</style>
+
+<body class="colorb-black">
+
+<div class="sidenav" onmouseover="bigSideNav()" onmouseout="normalSideNav()">
+  <div class="text-center">
+    <img src="http://localhost:4000/img/logo.png" alt="" width="25" height="25"> 
+  </div> 
+  <a href="/lists" class="displaynone"><span class="fontsize-16">Lists</span><img src="" alt=""></a>
+  <a href="/addlist" class="displaynone"><span class="fontsize-16">Add List</span></a>
+</div>
+
+<script>
+
+  const normalSideNav = () => {
+    var x = document.querySelector('.sidenav')
+    x.style.width = '50px';
+
+    var z, i;
+    z = document.querySelectorAll(".displaynone");
+    for (i = 0; i < z.length; i++) {
+      z[i].style.display = "none";
+    }
+  }
+
+  const bigSideNav = () => {
+    var x = document.querySelector('.sidenav')
+    x.style.width = '150px';
+
+    var z, i;
+    z = document.querySelectorAll(".displaynone");
+    for (i = 0; i < z.length; i++) {
+      z[i].style.display = "block";
+    }
+  }
+
+</script>
