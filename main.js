@@ -57,10 +57,10 @@ const validatedata = (mainWindow) => {
   
   const data = './userdata/userdata.json';
   if (fs.existsSync(data)) {
-    mainWindow.autoHideMenuBar = true;
+    mainWindow.setMenuBarVisibility(false)
     mainWindow.loadURL(`file://${__dirname}/src/welcome.html`);
   }else {
-    mainWindow.autoHideMenuBar = true;
+    mainWindow.setMenuBarVisibility(false)
     mainWindow.loadURL(`file://${__dirname}/src/index.html`);    
   }
 }
