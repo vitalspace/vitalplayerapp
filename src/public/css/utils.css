@@ -148,6 +148,8 @@
     box-shadow: 5px 5px #4f1a9c;
 }
 
+.transition-s1 { transition: width 1s; }
+
 /* ========== [ Bottons ] ========== */
 .btn-1 {
     border: none;
