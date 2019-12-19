@@ -6,6 +6,10 @@ const delay = require('delay');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const puppeteer = require('puppeteer-core');
+// ========== [ Set Icon ] ========== //
+const nativeImage = require('electron').nativeImage;
+let image = nativeImage.createFromPath(__dirname + '/src/public/icon/logo1.png'); 
+image.setTemplateImage(true);
 // ==========  [ Utils ] ========== // 
 const { getExecutablePath } = require('./src/utils/utils');
 const run = require('./functions/follow');
@@ -24,7 +28,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     maximizable: false,  
-    icon: __dirname + '/icon/logo1.png', 
+    icon: image, 
     webPreferences: {
       nodeIntegration: true
     },

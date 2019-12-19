@@ -1,6 +1,9 @@
 node_modules
 userdata
 list
+lista1.json
 listas.json
 electron-builder.yml
 dist
+test
+security

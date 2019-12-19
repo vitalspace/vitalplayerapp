@@ -8,6 +8,21 @@ const puppeteer = require("puppeteer-core");
 const router = express.Router();
 // ========== [ Utils ] ========== //
 const { getExecutablePath } = require('../utils/utils');
+// ========== [ Servers ] ========== //
+const f = 'fembed.com/f';
+const g = 'gounlimited.to';
+const v = 'vidcloud.co/v';
+const o = 'onlystream.tv';
+const b = 'byter.tv/v';
+const j = 'jetload.net/e';
+
+const fembed = 'dc10cf8f-f07a-4f9xq8-b01z-82eb5006bdzw9';
+const gounlimited = '753d0771-0298-43e0-8c78-f66fdc660a69';
+const vidcloud = 'ad0e2adb-99e7-4448-a2b0-cd53def13f88';
+const onlystream = 'f7256aaf-e72d-4f65-88c1-7cf403fba207';
+const byter = 'dc10cf8f-f07a-4f98-b01z-82eb5006bdzw9';
+const jetload = 'dbf1d044-e1e5-4a29-af8f-2809e376401f';
+const jetloadmp4 = '36f6f469-b4c1-4e94-b4c4-36fdaa373541';
 // ========== [ load of existing list data ] ========== //
 let list;
 const listdata = './list';
@@ -79,7 +94,7 @@ router.get('/video', (req, res) => {
     description: req.query.description
   }
 
-  if (object.server == 'fembed') {
+  if (object.server == fembed) {
     // ========== [ Run program ] ========== //
     (async function run(object) {
       obj = object;
@@ -94,7 +109,7 @@ router.get('/video', (req, res) => {
         ...launchOptions
       });
       const [page] = await browser.pages();
-      await page.goto(`https://www.fembed.com/f/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${f}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.waitForSelector('#download');
       await page.$eval('#download', elem => elem.click());
       await page.waitForSelector('.button.is-medium.is-success.clickdownload');
@@ -112,7 +127,7 @@ router.get('/video', (req, res) => {
     };
   }
 
-  if (object.server == 'gounlimited') {
+  if (object.server == gounlimited) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -139,7 +154,7 @@ router.get('/video', (req, res) => {
         }
         request.continue();
       });
-      await page.goto(`https://gounlimited.to/${obj.id}.html`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${g}/${obj.id}.html`, { timeout: 0, waitUntil: "networkidle2" });
       await page.$eval('button.btn.btn-primary.btn-sm', elem => elem.click());
       await page.waitForSelector('a.btn.btn-primary.btn-sm');
       await page.$eval('a.btn.btn-primary.btn-sm', elem => elem.click());
@@ -164,7 +179,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == 'vidcloud') {
+  if (object.server == vidcloud) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -185,7 +200,7 @@ router.get('/video', (req, res) => {
       });
       const [page] = await browser.pages();
 
-      await page.goto(`https://vidcloud.co/v/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${v}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.click('.btn.btn-lg.btn-success');
       await page.waitForSelector('.dropdown-menu li a');
       const link = await page.$$eval('.dropdown-menu li a', am => am.filter(e => e.href).map(e => e.href));
@@ -199,7 +214,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == 'onlystream') {
+  if (object.server == onlystream) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -219,7 +234,7 @@ router.get('/video', (req, res) => {
         ...launchOptions
       });
       const [page] = await browser.pages();
-      await page.goto(`https://onlystream.tv/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${o}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.waitForSelector('a#download-tab');
       await page.click('a#download-tab');
       browser.on('targetcreated', async (target) => {
@@ -246,7 +261,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == 'byter') {
+  if (object.server == byter) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -267,7 +282,7 @@ router.get('/video', (req, res) => {
         ...launchOptions
       });
       const [page] = await browser.pages();
-      await page.goto(`https://byter.tv/v/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${b}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.waitForSelector('video');
       link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
       await browser.close();
@@ -280,7 +295,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == 'jetload') {
+  if (object.server == jetload) {
     // ========== [ Run program ] ========== //
     let url;
     (async function run(object) {
@@ -312,7 +327,7 @@ router.get('/video', (req, res) => {
           }
         }
       });
-      await page.goto(`https://jetload.net/e/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${j}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.waitFor(5000);
       await browser.close();
       const calidad = {
@@ -324,7 +339,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == 'jetloadmp4') {
+  if (object.server == jetloadmp4) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -345,7 +360,7 @@ router.get('/video', (req, res) => {
         ...launchOptions
       });
       const [page] = await browser.pages();
-      await page.goto(`https://jetload.net/e/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.goto(`https://${j}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
       await page.waitForSelector('video');
       link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
       await browser.close();
@@ -358,8 +373,5 @@ router.get('/video', (req, res) => {
     }
   }
 });
-
-
-
 
 module.exports = { router };
