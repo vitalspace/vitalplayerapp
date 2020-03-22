@@ -3,11 +3,12 @@
 const path = require('path');
 const fs = require('fs-extra');
 const fkill = require('fkill');
+const fetch = require('node-fetch');
 const puppeteer = require('puppeteer-core');
 // ========== [ Settings ] ========== //
 const spotify = "https://open.spotify.com";
 const login = "https://accounts.spotify.com/login";
-const playlist = "https://open.spotify.com/playlist/3ux7PjJXjJpZY44cnvwRUP";
+const playlist = 'https://pastebin.com/raw/DyeRx5fD';
 // ========== [ Utils ] ========== //
 const { getExecutablePath } = require('../src/utils/utils');
 // ========== [ Run Program ] ========== //
@@ -20,7 +21,6 @@ const lauchpuppeteer = async launchOptions => {
   const browser = await puppeteer.launch({
     headless: false,
     //userDataDir: './data',
-    defaultViewport: null,
     args: [
       `--app=${spotify}`,
       '--window-size=1,1',
@@ -40,10 +40,10 @@ const lauchpuppeteer = async launchOptions => {
     data = await JSON.parse(json);
   }
   const [page] = await browser.pages();
-  browser.on('targetdestroyed', async () => {
+  page.on('close', async () => {
     await fkill('vitalplayer.exe');
-  });
-
+    console.log('se cierro chrome')
+  })
   await page.setViewport({width: 1, height: 1});
   // ========== [ Chek the login ] ========== //
   await page.goto(login, { timeout: 0, waitUntil: "networkidle2" });
@@ -55,30 +55,39 @@ const lauchpuppeteer = async launchOptions => {
   await page.$eval('#login-button', elem => elem.click());
   await page.waitFor(10000);
   if (await page.$('p.alert.alert-warning') !== null) {
-    fs.rmdirSync('../userdata/userdata.json');
+    await fs.rmdirSync('./userdata/userdata.json');
+    await fkill('vitalplayer.exe');
   } else {
     await functions(page);
   }
 }
+
 const functions = async (page) => {
+  let link;
+  const links = await (await fetch(playlist)).json();
+  const values = await Object.values(links);
+  link = await values[parseInt(Math.random() * values.length)];
   // ========== [ Go randomly to a playlist. ] ========== //
-  await page.goto(`${playlist}`, { timeout: 0, waitUntil: "networkidle2" });
+  await page.goto(`${link}`, { timeout: 0, waitUntil: "networkidle2" });
 
   await page.waitFor(5000);
 
+/*   _2221af4e93029bedeab751d04fab4b8b-scss _8fec0262e00c11513faad732021ed012-scss
+  _2221af4e93029bedeab751d04fab4b8b-scss _8fec0262e00c11513faad732021ed012-scss */
+
   // ========== [ Play the playlist. ] ========== //
-  if (await page.$('button.btn.btn-green.false') !== null) {
-    await page.$eval('button.btn.btn-green.false', elem => elem.click());
+  if (await page.$('button._2221af4e93029bedeab751d04fab4b8b-scss._8fec0262e00c11513faad732021ed012-scss') !== null) {
+    await page.$eval('button._2221af4e93029bedeab751d04fab4b8b-scss._8fec0262e00c11513faad732021ed012-scss', elem => elem.click());
     console.log('ok you r playing the list.')
   }
 
   await page.waitFor(5000);
 
   // ========== [ Add list to your library. ] ========== //
-  if (await page.$('div.spoticon-heart-active-24') !== null) {
+  if (await page.$('button.control-button.spoticon-heart-active-16.control-button--active') !== null) {
     console.log('You have already added this list to your collection.')
   } else {
-    await page.$eval('button.btn.btn-transparent.btn--narrow', elem => elem.click());
+    await page.$eval('button.control-button.spoticon-heart-16', elem => elem.click());
     console.log('Adding this list to your collection.')
   }
 

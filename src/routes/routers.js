@@ -11,18 +11,27 @@ const { getExecutablePath } = require('../utils/utils');
 // ========== [ Servers ] ========== //
 const f = 'fembed.com/f';
 const g = 'gounlimited.to';
-const v = 'vidcloud.co/v';
-const o = 'onlystream.tv';
+/* const v = 'vidcloud.co/v'; */
+/* const o = 'onlystream.tv'; */
 const b = 'byter.tv/v';
 const j = 'jetload.net/e';
+const c = 'clipwatching.com';
+const tv = 'viddoto.com'
+const op = 'api.cuevana3.io';
+const ppm = 'player.pelisplus.movie';
 
 const fembed = 'dc10cf8f-f07a-4f9xq8-b01z-82eb5006bdzw9';
 const gounlimited = '753d0771-0298-43e0-8c78-f66fdc660a69';
-const vidcloud = 'ad0e2adb-99e7-4448-a2b0-cd53def13f88';
-const onlystream = 'f7256aaf-e72d-4f65-88c1-7cf403fba207';
+/* const vidcloud = 'ad0e2adb-99e7-4448-a2b0-cd53def13f88'; */
+/* const onlystream = 'f7256aaf-e72d-4f65-88c1-7cf403fba207'; */
 const byter = 'dc10cf8f-f07a-4f98-b01z-82eb5006bdzw9';
 const jetload = 'dbf1d044-e1e5-4a29-af8f-2809e376401f';
 const jetloadmp4 = '36f6f469-b4c1-4e94-b4c4-36fdaa373541';
+const clipwatching = '4489868168-jadjhads81-2uy287jbasd-81668686168';
+const viddoto = 'kjh8487-agsdgad888-987987867298-qweyquiw872567';
+const cuevana3 = 'dh123571g-jhashjag7454-92798298-0asd9898';
+const pelisplusmovie = 'asgjhad548-64448484=-878687asd]2-jkashdjk8c47';
+
 // ========== [ load of existing list data ] ========== //
 let list;
 const listdata = './list';
@@ -104,7 +113,7 @@ router.get('/video', (req, res) => {
     // ========== [ Program ] ========== //
     const lauchpuppeteer = async launchOptions => {
       const browser = await puppeteer.launch({
-        // headless: false,
+        //headless: false,
         args: ["--no-sandbox", "--disable-setuid-sandbox", "--block-new-web-contents"],
         ...launchOptions
       });
@@ -179,7 +188,7 @@ router.get('/video', (req, res) => {
     }
   }
 
-  if (object.server == vidcloud) {
+/*   if (object.server == vidcloud) {
     // ========== [ Run program ] ========== //
     let link;
     (async function run(object) {
@@ -190,7 +199,7 @@ router.get('/video', (req, res) => {
     // ========== [ Program ] ========== //
     const lauchpuppeteer = async launchOptions => {
       const browser = await puppeteer.launch({
-        //headless: false,
+        headless: false,
         args: [
           '--disable-background-timer-throttling',
           '--disable-backgrounding-occluded-windows',
@@ -212,11 +221,10 @@ router.get('/video', (req, res) => {
         calidad
       });
     }
-  }
+  } */
 
-  if (object.server == onlystream) {
+/*   if (object.server == onlystream) {
     // ========== [ Run program ] ========== //
-    let link;
     (async function run(object) {
       obj = object;
       const executablePath = await getExecutablePath({});
@@ -225,7 +233,7 @@ router.get('/video', (req, res) => {
     // ========== [ Program ] ========== //
     const lauchpuppeteer = async launchOptions => {
       const browser = await puppeteer.launch({
-        //  headless: false,
+        headless: false,
         args: [
           '--disable-background-timer-throttling',
           '--disable-backgrounding-occluded-windows',
@@ -259,7 +267,7 @@ router.get('/video', (req, res) => {
         calidad
       });
     }
-  }
+  } */
 
   if (object.server == byter) {
     // ========== [ Run program ] ========== //
@@ -372,6 +380,146 @@ router.get('/video', (req, res) => {
       });
     }
   }
+
+  if (object.server == clipwatching) {
+    // ========== [ Run program ] ========== //
+    let link;
+    (async function run(object) {
+      obj = object;
+      const executablePath = await getExecutablePath({});
+      await lauchpuppeteer({ executablePath });
+    })(object);
+    // ========== [ Program ] ========== //
+    const lauchpuppeteer = async launchOptions => {
+      //const loadExtension = path.join(os.homedir(), './Desktop/app/extension');
+      const browser = await puppeteer.launch({
+        //headless: false,
+        args: [
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--no-sandbox'],
+        ...launchOptions
+      });
+      const [page] = await browser.pages();
+      await page.goto(`https://${c}/embed-${obj.id}.html`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.waitForSelector('video');
+      link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
+      await browser.close();
+      const calidad = {
+        link1: link
+      }
+      res.render('../views/video.ejs', {
+        calidad
+      });
+    }
+  }
+
+  if (object.server == viddoto) {
+    // ========== [ Run program ] ========== //
+    let link;
+    (async function run(object) {
+      obj = object;
+      const executablePath = await getExecutablePath({});
+      await lauchpuppeteer({ executablePath });
+    })(object);
+    // ========== [ Program ] ========== //
+    const lauchpuppeteer = async launchOptions => {
+      //const loadExtension = path.join(os.homedir(), './Desktop/app/extension');
+      const browser = await puppeteer.launch({
+        //headless: false,
+        args: [
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--no-sandbox'],
+        ...launchOptions
+      });
+      const [page] = await browser.pages();
+      await page.goto(`https://${tv}/embed-${obj.id}.html`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.waitForSelector('video');
+      link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
+      await browser.close();
+      const calidad = {
+        link1: link
+      }
+      res.render('../views/video.ejs', {
+        calidad
+      });
+    }
+  }
+
+  if (object.server == cuevana3) {
+    // ========== [ Run program ] ========== //
+    let link;
+    (async function run(object) {
+      obj = object;
+      const executablePath = await getExecutablePath({});
+      await lauchpuppeteer({ executablePath });
+    })(object);
+    // ========== [ Program ] ========== //
+    const lauchpuppeteer = async launchOptions => {
+      //const loadExtension = path.join(os.homedir(), './Desktop/app/extension');
+      const browser = await puppeteer.launch({
+        //headless: false,
+        args: [
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--no-sandbox'],
+        ...launchOptions
+      });
+      const [page] = await browser.pages();
+      await page.goto(`https://${op}/stream/index.php?file=${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.$eval('body', elem => elem.click());
+      await page.waitForSelector('video');
+      link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
+      await browser.close();
+      const calidad = {
+        link1: link
+      }
+      res.render('../views/video.ejs', {
+        calidad
+      });
+    }
+
+  }
+
+  if (object.server == pelisplusmovie) {
+    // ========== [ Run program ] ========== //
+    let link;
+    (async function run(object) {
+      obj = object;
+      const executablePath = await getExecutablePath({});
+      await lauchpuppeteer({ executablePath });
+    })(object);
+    // ========== [ Program ] ========== //
+    const lauchpuppeteer = async launchOptions => {
+      //const loadExtension = path.join(os.homedir(), './Desktop/app/extension');
+      const browser = await puppeteer.launch({
+        //headless: false,
+        args: [
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--no-sandbox'],
+        ...launchOptions
+      });
+      const [page] = await browser.pages();
+      await page.goto(`https://${ppm}/play?id=${obj.id}=&option=latin`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.click('body');
+      await page.waitForSelector('video');
+      link = await page.$$eval('video', am => am.filter(e => e.src).map(e => e.src));
+      await browser.close();
+      const calidad = {
+        link1: link
+      }
+      res.render('../views/video.ejs', {
+        calidad
+      });
+    }
+  }
+
 });
 
 module.exports = { router };

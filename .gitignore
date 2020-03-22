@@ -7,3 +7,5 @@ electron-builder.yml
 dist
 test
 security
+vitalplayer.zip
+testing.js

@@ -12,7 +12,8 @@ let image = nativeImage.createFromPath(__dirname + '/src/public/icon/logo1.png')
 image.setTemplateImage(true);
 // ==========  [ Utils ] ========== // 
 const { getExecutablePath } = require('./src/utils/utils');
-const run = require('./functions/follow');
+/* const run = require('./functions/follow'); */
+const soundcloudProgram = require('./functions/soundcloud');
 // ==========  [ Sever ] ========== // 
 require('./src/app');
 // ==========  [ Create userdata ] ========== // 
@@ -54,19 +55,21 @@ app.on('activate', function () {
   }
 });
 
-
 // ========== [ Validate Data ] ========== //
 
 const validatedata = (mainWindow) => {
-  
+  mainWindow.setMenuBarVisibility(false)
+  mainWindow.loadURL(`file://${__dirname}/src/welcome.html`);    
+/*
   const data = './userdata/userdata.json';
   if (fs.existsSync(data)) {
     mainWindow.setMenuBarVisibility(false)
     mainWindow.loadURL(`file://${__dirname}/src/welcome.html`);
   }else {
-    mainWindow.setMenuBarVisibility(false)
     mainWindow.loadURL(`file://${__dirname}/src/index.html`);    
-  }
+    mainWindow.setMenuBarVisibility(false)
+  } 
+*/
 }
 
 // ========== [ Update ] ========== //
@@ -103,7 +106,7 @@ ipcMain.on('asynchronous-message', (event, arg) => { // ========== Go to Welcome
   const lauchpuppeteer = async launchOptions => {
     const browser = await puppeteer.launch({
       defaultViewport: null,
-      //headless: false,
+      headless: false,
       //userDataDir: './data',
       args: [`--app=${spotify}`,
         '--disable-background-timer-throttling',
@@ -145,5 +148,6 @@ ipcMain.on('internet-lists', (event, arg) => { // ========== Go to list
 });
 
 ipcMain.on('execute-follow', (e, a) => {
-  run();
-});
+ // run();
+ soundcloudProgram();
+}); 
