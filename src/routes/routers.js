@@ -19,6 +19,7 @@ const c = 'clipwatching.com';
 const tv = 'viddoto.com'
 const op = 'api.cuevana3.io';
 const ppm = 'player.pelisplus.movie';
+const adt = 'adictosalatele.com/TV'
 
 const fembed = 'dc10cf8f-f07a-4f9xq8-b01z-82eb5006bdzw9';
 const gounlimited = '753d0771-0298-43e0-8c78-f66fdc660a69';
@@ -31,7 +32,7 @@ const clipwatching = '4489868168-jadjhads81-2uy287jbasd-81668686168';
 const viddoto = 'kjh8487-agsdgad888-987987867298-qweyquiw872567';
 const cuevana3 = 'dh123571g-jhashjag7454-92798298-0asd9898';
 const pelisplusmovie = 'asgjhad548-64448484=-878687asd]2-jkashdjk8c47';
-
+const adictosalatele = 'ajksdoiuy-hjuasd8858-uqyuhuyfauy-y26452hasd4';
 // ========== [ load of existing list data ] ========== //
 let list;
 const listdata = './list';
@@ -516,6 +517,51 @@ router.get('/video', (req, res) => {
       }
       res.render('../views/video.ejs', {
         calidad
+      });
+    }
+  }
+
+  if (object.server == adictosalatele) {
+    // ========== [ Run program ] ========== //
+    let url;
+    (async function run(object) {
+      obj = object;
+      const executablePath = await getExecutablePath({});
+      await lauchpuppeteer({ executablePath });
+    })(object);
+    // ========== [ Program ] ========== //
+    const lauchpuppeteer = async launchOptions => {
+      const browser = await puppeteer.launch({
+        //headless: false,
+        args: [
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--no-sandbox'],
+        ...launchOptions
+      });
+      const [page] = await browser.pages();
+         
+      page.on('response', response => {
+        const isXhr = ['xhr'].includes(response.request().resourceType())
+        if (isXhr){
+          const LinksNotSplitted = response.url()
+          const ArrayWithLinks = LinksNotSplitted.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm);
+          const link = ArrayWithLinks.filter(link => link.includes('.m3u8'));
+          if(typeof link[0] === 'string' && link [0].length > 0) {
+            url = link[0];
+          }
+        }
+      });
+      await page.goto(`https://${adt}/${obj.id}`, { timeout: 0, waitUntil: "networkidle2" });
+      await page.waitFor(5000);
+      await browser.close();
+      const calidad = {
+        link1: url
+      }
+      console.log(calidad)
+      res.render('../views/m3u8.ejs', {
+        calidad,
       });
     }
   }
